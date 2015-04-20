@@ -1,0 +1,13 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'search/style.css' %}" />
+<!--{{business}}-->
+<header><title class = "title" >Keywords of {{business.b_name}} at {{business.zipcode}}</title></header>
+
+<div class = "canvas">
+	<h1 class = "title" >Yelp Refiner</h1>
+	<h2 class = "sub-title" >Keywords of {{business.b_name}} at {{business.b_zipcode}}</h2>
+	{% for word in keywords %}
+	<li class="keyword">{{word}}</li>
+	{% endfor %}
+
+</div>

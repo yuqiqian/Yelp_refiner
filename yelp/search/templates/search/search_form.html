@@ -1,0 +1,32 @@
+<!--<html>
+<head>
+	<meta charset="utf-8" /> 
+    <title>Search - w3cschool.cc</title>
+</head>
+<body>
+    <form action="/search/" method="get">
+        <input type="text" name="q">
+        <input type="text" name="qw">
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>
+-->
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'search/style.css' %}" />
+
+<form action="/search/" method="get">
+{% csrf_token %}
+
+	<div class = "canvas">
+		<h1 class = "title" >Yelp Refiner</h1>
+		<h2 class = "sub-title" >Type in the name of shop and its zipcode.</h2>
+		<input class = "text-input" type="text" name="b_name" onfocus="if(this.value=='shop name') this.value=''" value="shop name"/>
+		<input class = "text-input" style="width:50px; margin-left:-50px;"type = "text" maxlength="6" name= "zipcode" value="zipcode" onfocus="if(this.value=='zipcode') this.value=''"/>
+		<input class = "bottom" type="submit" value="Search">
+
+		{% if error_message %}<p><strong>{{error_message}}</strong>></p>>{%endif%}
+
+	</div>
+</form>

@@ -1,0 +1,14 @@
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'search/style.css' %}" />
+
+
+<h1 class="title"> Yelp Refiner</h1>
+<h1 class="sub-title">Sorry, can't find the business</h1>
+<h1 class="sub-title">Is this what you need?</h1>
+
+<ul>
+{% for business in business_db %}
+	<li><a href="/search/?b_name={{business.b_name}}&zipcode={{business.b_zipcode}}">{{business.b_name}},{{business.b_zipcode}}</a></li>
+{% endfor %}
+</ul>

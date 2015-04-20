@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'search/style.css' %}" />
+
+<form action="{%url 'search:index' %}" method="post">
+{% csrf_token %}
+
+	<div class = "canvas">
+		{% if Title %}
+		<h1 class = "title" >{{Title}}</h1>
+		{% endif %}
+		<h2 class = "sub-title" >Type in the name of shop and its zipcode.</h2>
+		<input class = "text-input" type="text" name="business_name" onfocus="if(this.value=='shop name') this.value=''" value="shop name"/>
+		<input class = "text-input" style="width:50px; margin-left:-50px;"type = "text" maxlength="6" value="zipcode" onfocus="if(this.value=='zipcode') this.value=''"/>
+		<input class = "bottom" type="submit" value="Search">
+
+		{% if error_message %}<p><strong>{{error_message}}</strong>></p>>{%endif%}
+
+	</div>
+</form>
