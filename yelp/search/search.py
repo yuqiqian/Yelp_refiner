@@ -5,6 +5,7 @@ from django.shortcuts import render_to_response, render
 from django.core.context_processors import csrf
 
 from .models import Business
+from .single import listkeywords
 
 # form
 def search_form(request):
@@ -22,7 +23,7 @@ def search(request):
 			if len(b) != 0:
 				b = b[0]
 				message = "Business detail:" + b.b_id + "\t" + b.b_name+ "\t"+str(b.b_zipcode)
-				keywords = ["tasty","good atmosphere", "wait for long time"]
+				keywords = listkeywords(b.b_id)
 				return render(request,'search/results.html',{'business':b,"keywords":keywords})
 				#return HttpResponse(message)
 			else:
